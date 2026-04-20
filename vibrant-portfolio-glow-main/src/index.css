@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 97%;
+    --foreground: 240 10% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+    --primary: 145 70% 42%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 60% 45%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 140 10% 92%;
+    --muted-foreground: 140 5% 46%;
+    --accent: 170 80% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 10% 88%;
+    --input: 140 10% 88%;
+    --ring: 145 70% 42%;
+    --radius: 0.75rem;
+    --neon-pink: 130 80% 55%;
+    --neon-cyan: 170 90% 45%;
+    --gradient-start: 145 70% 42%;
+    --gradient-mid: 160 65% 45%;
+    --gradient-end: 130 80% 55%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 15% 8%;
+    --foreground: 0 0% 95%;
+    --card: 240 15% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 15% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 145 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 60% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 140 10% 18%;
+    --muted-foreground: 140 5% 65%;
+    --accent: 170 80% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 10% 20%;
+    --input: 140 10% 20%;
+    --ring: 145 70% 50%;
+    --neon-pink: 130 80% 60%;
+    --neon-cyan: 170 90% 50%;
+    --gradient-start: 145 70% 50%;
+    --gradient-mid: 160 65% 50%;
+    --gradient-end: 130 80% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl shadow-lg;
+  }
+  .dark .glass-card {
+    @apply bg-card/40 border-border/30;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-neon-pink bg-clip-text text-transparent;
+  }
+  .gradient-bg {
+    @apply bg-gradient-to-r from-primary via-secondary to-neon-pink;
+  }
+  .gradient-btn {
+    @apply gradient-bg text-primary-foreground px-6 py-3 rounded-lg font-heading font-semibold
+    hover:shadow-[0_0_25px_hsl(var(--primary)/0.4)] transition-all duration-300 hover:scale-105;
+  }
+  .gradient-btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-heading font-semibold
+    hover:gradient-bg hover:text-primary-foreground hover:border-transparent transition-all duration-300 hover:scale-105;
+  }
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--secondary) / 0.15);
+  }
+  .section-padding {
+    @apply py-20 md:py-28 px-4;
+  }
+  .hero-gradient-bg {
+    background: radial-gradient(ellipse at 20% 50%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, hsl(var(--secondary) / 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, hsl(var(--neon-pink) / 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, hsl(var(--accent) / 0.08) 0%, transparent 40%);
+  }
+  .dark .hero-gradient-bg {
+    background: radial-gradient(ellipse at 20% 50%, hsl(var(--primary) / 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, hsl(var(--secondary) / 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, hsl(var(--neon-pink) / 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 60%, hsl(var(--accent) / 0.1) 0%, transparent 40%);
+  }
+}
